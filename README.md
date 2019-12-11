@@ -1,4 +1,6 @@
-# Battleship2
+# Battleship
+
+Battleship built in Angular with multiplayer support using web sockets
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
