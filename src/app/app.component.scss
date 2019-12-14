@@ -6,6 +6,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  text-align: center;
 }
 
 .example-is-mobile .example-toolbar {
@@ -28,4 +29,8 @@ h1.example-app-name {
   /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
      `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
+}
+
+board {
+  max-width: 100px;
 }

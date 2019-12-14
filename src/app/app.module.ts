@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { TileComponent } from './tile/tile.component';
 import { BoardComponent } from './board/board.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TileComponent,
-    BoardComponent
+    BoardComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
