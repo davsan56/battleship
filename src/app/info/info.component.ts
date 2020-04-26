@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../service/game.service';
 
 @Component({
   selector: 'info',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoComponent implements OnInit {
 
-  constructor() { }
+  code = ""
+
+  constructor(private gameService: GameService) { }
 
   ngOnInit() {
+    this.gameService.messageChange.subscribe(value => {
+      console.log("new message recieved")
+      this.code = value
+    });
   }
-
 }

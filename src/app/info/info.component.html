@@ -1,1 +1,2 @@
-<p>info works!</p>
+<p *ngIf="code.length == 0">Hit new game to get a room code</p>
+<p *ngIf="code.length != 0">Send code <i>{{code}}</i> to someone to play!</p>

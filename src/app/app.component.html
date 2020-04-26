@@ -6,8 +6,9 @@
 
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <button mat-raised-button>New Game</button>
+      <mat-nav-list class="list-vertical">
+        <button (click)="newGame()" mat-raised-button>New Game</button>
+        <button (click)="joinGame()" mat-raised-button>Join Game</button>
       </mat-nav-list>
     </mat-sidenav>
 

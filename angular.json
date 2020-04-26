@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "battleship2"
+  "defaultProject": "battleship2",
+  "cli": {
+    "analytics": "e5f737a7-719e-4796-974f-3699ad9fa86c"
+  }
 }

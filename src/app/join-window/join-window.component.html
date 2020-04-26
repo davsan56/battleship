@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+  <p>Enter the room code for the Game you want to join</p>
+  <mat-form-field>
+    <mat-label>Room code:</mat-label>
+    <input matInput [(ngModel)]="code">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Nevermind</button>
+  <button mat-button [mat-dialog-close]="code" cdkFocusInitial>Send</button>
+</div>
