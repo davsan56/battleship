@@ -14,7 +14,7 @@ io.on('connection', (socket) => {
     var name = Math.random().toString(36).substr(2, 5);
    
     // make sure it is unique
-    while (games[name]) {
+    while (games.hasOwnProperty(name)) {
       name = Math.random().toString(36).substr(2, 5);
     }
 
@@ -33,7 +33,8 @@ io.on('connection', (socket) => {
 
     // tell the player the room
     io.to(name).emit('new', {
-      name: name, 
+      name: name,
+      message: "Send the code " + name + " to someone to start the game!",
       players: 1
       });
   });
@@ -41,20 +42,27 @@ io.on('connection', (socket) => {
   // Called when a user joins a game
   socket.on('join', function(user) {
     // Make sure the provided game is actually a game
-    if (games[user.name]) {
+    if (games[user["code"]]) {
       // Only allow 2 players in a room
-      if (games[user.name].users.length < 2) {
+      if (games[user["code"]].users.length < 2) {
         // Make sure the same user isn't trying to join the room twice
-        if (games[user.name].users.indexOf(socket.id) < 0) {
+        if (games[user["code"]].users.indexOf(socket.id) < 0) {
           // Join the room
-          socket.join(user.name);
+          socket.join(user["code"]);
           // Update the user list
-          games[user.name].users.push((socket.id));
+          games[user["code"]].users.push((socket.id));
           // Update the turn
-          games[user.name].turn = games[user.name].users[Math.floor(Math.random() * 2)];
+          games[user["code"]].turn = games[user["code"]].users[Math.floor(Math.random() * 2)];
           // Let everyone know the game board
-          io.to(user.name).emit('new', {name: user.name, board: games[user.name].board, players: 2,
-            turn: games[user.name].turn, color: 'red'});
+          io.to(user["code"]).emit('start', {
+            name: user["code"],
+            board: games[user["code"]].board,
+            players: 2,
+            turn: games[user["code"]].turn,
+            message: "The game has started!",
+            color: 'red'}
+          );
+          console.log(games)
         }
       } else {
         // Game is full

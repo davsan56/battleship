@@ -14,7 +14,7 @@
 
     <mat-sidenav-content>
       <info></info>
-      <board></board>
+      <board *ngIf="gameStateService.gameState != gameStateStatus.NONE"></board>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
